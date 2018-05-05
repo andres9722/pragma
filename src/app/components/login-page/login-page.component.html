@@ -1,0 +1,13 @@
+<div class="form">
+  <h1 class="form__title">login</h1>
+  <form action="" class="form__form" (submit)="loginUser()">
+    <label for="email" class="form__label">Email:</label>
+    <input type="text" name="email" placeholder="Email" class="form__input" [(ngModel)]="email" required>
+    <label for="password" class="form__label">Password:</label>
+    <input type="password" name="password" placeholder="Password" class="form__input" [(ngModel)]="password" required>
+    <input type="submit" value="Login" class="form__submit">
+  </form>
+  <a href="" (click)="resetPassword()">Did you forget your password?</a>
+  <p class="register__message">You do not have an account?</p>
+  <a href="" routerLink="/register" class="register__link">Register</a>
+</div>
