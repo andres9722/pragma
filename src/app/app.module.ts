@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 import { environment } from '../environments/environment';
 import { FlashMessagesModule } from "angular2-flash-messages";
 import { FlashMessagesService } from "angular2-flash-messages";
@@ -20,6 +21,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { TodoService } from './services/todo.service';
+import { TodoInfoComponent } from './components/todo-info/todo-info.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -31,7 +36,9 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     DashboardComponent,
     NotFoundPageComponent,
     HeaderComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    TodoComponent,
+    TodoInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +47,10 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FlashMessagesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireDatabaseModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, TodoService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

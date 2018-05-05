@@ -7,14 +7,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { TodoInfoComponent } from './components/todo-info/todo-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home',pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: 'profile', component: ProfilePageComponent },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard/todo/:key', component: TodoInfoComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundPageComponent }
 ];
 

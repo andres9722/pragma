@@ -1,0 +1,20 @@
+<div class="todos">
+  <div class="todos__control">
+    <input type="text" (keyup.enter)="addTodo(todoText)" class="todos__input" name="todoInput" id="todoInput" minlength="5" #todoText placeholder="ADD">
+    <button class="todos__button" (click)="addTodo(todoText)">Submit</button>
+  </div>
+
+  <section class="todos__container">
+    <ul class="todos__list">
+      <li class="todos__item" *ngFor="let item of todoList">
+          <input type="checkbox" (click)="alterCheck(item.$key, item.isChecked)"
+                [ngClass]="item.isChecked ? 'todos__check todos__check--checked' : 'todos__check'"
+                [(ngModel)]="item.isChecked" >
+          <p class="todos__text">{{item.todoText}}</p>
+          <input [routerLink]="['/dashboard/todo', item.$key]" class="todos__button todos__button--info" type="button" value="Info">
+          <input class="todos__button todos__button--remove" type="button" value="Remove" (click)="removeTodo(item.$key)">
+      </li>
+    </ul>
+  </section>
+</div>
+

@@ -83,14 +83,14 @@
         }
 
         &--logout {
-          transition: background .3s cubic-bezier(.54,.11,.24,1.63);
+          transition: background .3s ease;
           @include from($large) {
-            background: color(principal-color);
+            background: color(secondary-color);
             transform: skewX(-5deg);
             font-size: 14px;
             &:hover {
               border: none;
-              background: darken(color(principal-color), 10);
+              background: darken(color(secondary-color), 20);
             }
           }
         }
@@ -98,7 +98,8 @@
 
       &__link {
         color: color(principal-color);
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: bold;
 
         @include from($large) {
           padding-top: 0.5em;

@@ -1,5 +1,21 @@
 <div class="profile l-container">
-  <h1>HELLO! </h1>
-  <p>{{userName}}</p>
+  <section class="profile__info">
+    <h1 *ngIf="userInfo" class="profile__title">HELLO! {{userInfo.firstName}}</h1>
+    <p *ngIf="userInfo" class="profile__text"> <b>Email: </b> {{userEmail}}</p>
+    <p *ngIf="userInfo" class="profile__text"> <b>First name: </b> {{userInfo.firstName}}</p>
+    <p *ngIf="userInfo" class="profile__text"> <b>Last name: </b> {{userInfo.lastName}}</p>
+  </section>
+
+  <div class="form">
+    <h1 class="form__title">User info</h1>
+    <form action="" class="form__form" (submit)="addUser()">
+      <label for="firstName" class="form__label">First name:</label>
+      <input type="text" name="firstName" placeholder="First name" class="form__input" [(ngModel)]="firstName" [required]>
+      <label for="lastName" class="form__label">Last name:</label>
+      <input type="text" name="lastName" placeholder="Last name" class="form__input" [(ngModel)]="lastName" [required]>
+      <input type="submit" value="Save" class="form__submit">
+    </form>
+    <a href="" routerLink="/dashboard" class="dashboard__link">Dashboard</a>
+  </div>
 </div>
 

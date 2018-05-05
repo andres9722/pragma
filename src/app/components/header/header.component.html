@@ -6,7 +6,7 @@
     <div class="menu__icon"> <span class='menu__icon--next'> </span></div>
     <nav class="nav">
       <ul class="menu">
-        <li class="menu__item">
+        <li class="menu__item" *ngIf="!isLogin">
           <a href="" routerLink='/home' class="menu__link">Home</a>
         </li>
         <li class="menu__item" *ngIf="isLogin">
