@@ -23,6 +23,12 @@
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: bold;
+    cursor: pointer;
+    transition: background .3s ease;
+
+    &:hover {
+      background: darken(color(principal-color), 20);
+    }
 
     &--remove, &--info {
       width: auto;
@@ -31,11 +37,19 @@
       background: color(secondary-color);
       font-weight: 100;
       cursor: pointer;
+
+      &:hover {
+        background: darken(color(secondary-color), 25);
+      }
     }
 
     &--info {
       background: color(principal-color);
       margin-right: 8px;
+
+      &:hover {
+        background: darken(color(principal-color), 20);
+      }
     }
   }
 
@@ -73,4 +87,10 @@
     font-family: $font-text;
     width: 100%;
   }
+}
+
+.loader {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
 }

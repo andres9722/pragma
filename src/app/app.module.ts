@@ -25,6 +25,9 @@ import { TodoComponent } from './components/todo/todo.component';
 import { TodoService } from './services/todo.service';
 import { TodoInfoComponent } from './components/todo-info/todo-info.component';
 import { UserService } from './services/user.service';
+import { AvataruploadService } from './services/avatarupload.service';
+import { AvatarUploadFormComponent } from './components/avatar-upload-form/avatar-upload-form.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { UserService } from './services/user.service';
     HeaderComponent,
     ProfilePageComponent,
     TodoComponent,
-    TodoInfoComponent
+    TodoInfoComponent,
+    AvatarUploadFormComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService, TodoService, UserService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, TodoService, UserService, AvataruploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

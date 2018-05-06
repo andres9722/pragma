@@ -20,11 +20,11 @@ export class RegisterPageComponent implements OnInit {
   registerUser () {
     this.authService.registerUser(this.email, this.password)
       .then(response => {
-        this.flashMessage.show('User created correctly', {cssClass: 'alert__success', timeout: 3500})
+        this.flashMessage.show('User created correctly', {cssClass: 'alert__success', timeout: 3000})
         this.router.navigate(['/dashboard'])
       })
       .catch(err => {
-        this.flashMessage.show(err.message, {cssClass: 'alert__error', timeout: 3500})
+        this.flashMessage.show(err.message, {cssClass: 'alert__error', timeout: 3000})
       })
   }
 

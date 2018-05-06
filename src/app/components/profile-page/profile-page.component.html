@@ -1,9 +1,15 @@
 <div class="profile l-container">
   <section class="profile__info">
+    <img *ngIf="userAvatar" src={{userAvatar}} alt="Avatar" class="profile__avatar">
     <h1 *ngIf="userInfo" class="profile__title">HELLO! {{userInfo.firstName}}</h1>
     <p *ngIf="userInfo" class="profile__text"> <b>Email: </b> {{userEmail}}</p>
     <p *ngIf="userInfo" class="profile__text"> <b>First name: </b> {{userInfo.firstName}}</p>
     <p *ngIf="userInfo" class="profile__text"> <b>Last name: </b> {{userInfo.lastName}}</p>
+    <h1 *ngIf="userInfo" class="profile__title--avatar">{{userInfo.firstName}} set your avatar!</h1>
+    <div *ngIf="!userInfo || !userAvatar" class="loader">
+      <app-spinner></app-spinner>
+    </div>
+    <app-avatar-upload-form></app-avatar-upload-form>
   </section>
 
   <div class="form">
