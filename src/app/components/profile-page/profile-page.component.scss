@@ -10,7 +10,7 @@
   &__info {
     position: relative;
     padding: 0 16px 16px;
-    box-shadow: 2px 2px 2px rgba(color(principal-color), .1);
+    box-shadow: 2px 2px 2px color(border-color);
   }
 
   &__avatar {
@@ -42,7 +42,7 @@
   }
 
   .form {
-    box-shadow: 2px 2px 2px rgba(color(principal-color), .1);
+    box-shadow: 2px 2px 2px color(border-color);
     display: flex;
     justify-content: left;
     align-items: center;
@@ -59,12 +59,18 @@
       width: 300px;
 
       .form__input {
-        padding: 8px 4px;
-        margin-bottom: 8px;
+        padding: 8px;
+        margin-bottom: 16px;
+        border-radius: 5px;
+        border: 3px solid color(border-color);
+        color: color(font-color);
+        outline-color: darken(color(border-color), 10);
       }
 
       .form__label {
         margin-bottom: 4px;
+        opacity: 0.8;
+        padding: 8px;
       }
 
       .form__submit {
@@ -77,9 +83,10 @@
         color: color(white);
         cursor: pointer;
         transition: background .3s ease;
+        border-radius: 5px;
 
         &:hover {
-          background: darken(color(secondary-color), 25);
+          background: darken(color(secondary-color), 10);
         }
       }
     }
