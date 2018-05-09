@@ -3,9 +3,12 @@
 @import '../shared/typography.scss';
 
 .profile {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 32px;
+
+  @include from($medium) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+  }
 
   &__info {
     position: relative;
@@ -27,6 +30,7 @@
     margin: 0 0 16px;
     font-size: 32px;
     text-transform: uppercase;
+    width: 80%;
 
     &--avatar {
       font-size: 24px;
@@ -65,6 +69,10 @@
         border: 3px solid color(border-color);
         color: color(font-color);
         outline-color: darken(color(border-color), 10);
+
+        &--invalid {
+          border: 2px solid rgba(color(secondary-color), .3);
+        }
       }
 
       .form__label {
@@ -84,6 +92,10 @@
         cursor: pointer;
         transition: background .3s ease;
         border-radius: 5px;
+
+        &:disabled {
+          opacity: 0.7;
+        }
 
         &:hover {
           background: darken(color(secondary-color), 10);

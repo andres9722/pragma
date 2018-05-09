@@ -24,6 +24,10 @@
       border-radius: 5px;
       border: 3px solid color(border-color);
       outline-color: darken(color(border-color), 10);
+
+      &--invalid {
+        border: 2px solid rgba(color(secondary-color), .3);
+      }
     }
 
     .form__label {
@@ -43,6 +47,10 @@
       cursor: pointer;
       transition: background .3s ease;
       border-radius: 5px;
+
+      &:disabled {
+        opacity: 0.7;
+      }
 
       &:hover {
         background: darken(color(secondary-color), 10);

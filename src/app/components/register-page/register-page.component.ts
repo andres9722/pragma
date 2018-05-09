@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from "@angular/router";
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-register-page',
@@ -11,10 +12,20 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class RegisterPageComponent implements OnInit {
   private email: string;
   private password: string;
+  private registerForm: FormGroup;
 
-  constructor(public authService: AuthService, public router: Router, private flashMessage: FlashMessagesService) { }
+
+  constructor(private authService: AuthService,
+    private router: Router,
+    private flashMessage: FlashMessagesService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.registerForm = this.fb.group({
+      'email': [null, Validators.compose([Validators.required, Validators.email])],
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(6)])]
+    })
   }
 
   registerUser () {

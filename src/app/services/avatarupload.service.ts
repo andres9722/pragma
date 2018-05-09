@@ -24,9 +24,8 @@ export class AvataruploadService {
 
     this.uploadTaks.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
       upload.progress = (this.uploadTaks.snapshot.bytesTransferred / this.uploadTaks.snapshot.totalBytes) * 100
-      console.log(snapshot)
     }, err => {
-      console.log(err)
+      this.flashMessage.show(err.message, {cssClass: 'alert__error', timeout: 3000})
     }, () => {
       upload.url = this.uploadTaks.snapshot.downloadURL
       upload.name = upload.file.name
@@ -46,7 +45,7 @@ export class AvataruploadService {
       .then(() => {
         this.deleteFileStorage(upload.name)
       })
-      .catch(err => console.log(err))
+      .catch(err => this.flashMessage.show(err.message, {cssClass: 'alert__error', timeout: 3000}))
   }
 
   private deleteFileData($key: string) {

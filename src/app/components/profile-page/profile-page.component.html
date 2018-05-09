@@ -1,25 +1,37 @@
 <div class="profile l-container">
   <section class="profile__info">
-    <img *ngIf="userAvatar" src={{userAvatar}} alt="Avatar" class="profile__avatar">
-    <h1 *ngIf="userInfo" class="profile__title">HELLO! {{userInfo.firstName}}</h1>
-    <p *ngIf="userInfo" class="profile__text"> <b>Email: </b> {{userEmail}}</p>
-    <p *ngIf="userInfo" class="profile__text"> <b>First name: </b> {{userInfo.firstName}}</p>
-    <p *ngIf="userInfo" class="profile__text"> <b>Last name: </b> {{userInfo.lastName}}</p>
-    <h1 *ngIf="userInfo" class="profile__title--avatar">{{userInfo.firstName}} set your avatar!</h1>
-    <div *ngIf="!userInfo || !userAvatar" class="loader">
+    <img *ngIf="userActiveAvatar" src={{userActiveAvatar}} alt="Avatar" class="profile__avatar">
+
+    <h1 *ngIf="userInfo && providerPass" class="profile__title" >HELLO! {{userInfo.firstName}}</h1>
+    <h1 *ngIf="!providerPass" class="profile__title" >HELLO! {{displayName}}</h1>
+
+    <p *ngIf="userInfo" class="profile__text"> <b>Email: </b> {{userActiveEmail}}</p>
+    <p *ngIf="userInfo && providerPass" class="profile__text"> <b>First name: </b> {{userInfo.firstName}}</p>
+    <p *ngIf="userInfo && providerPass" class="profile__text"> <b>Last name: </b> {{userInfo.lastName}}</p>
+    <p *ngIf="!providerPass" class="profile__text"> <b>Name: </b> {{userActiveDisplayName}}</p>
+    <p *ngIf="!providerPass" class="profile__text"> <b>Provider: </b> {{userActiveProvider}}</p>
+
+    <h1 *ngIf="userInfo && providerPass" class="profile__title--avatar" >{{userInfo.firstName}} set your avatar!</h1>
+    <app-avatar-upload-form *ngIf="providerPass"></app-avatar-upload-form>
+
+    <div *ngIf="!userInfo" class="loader">
       <app-spinner></app-spinner>
     </div>
-    <app-avatar-upload-form></app-avatar-upload-form>
   </section>
 
-  <div class="form">
+
+  <div class="form" *ngIf="providerPass">
     <h1 class="form__title">User info</h1>
-    <form action="" class="form__form" (submit)="addUser()">
+    <form action="" class="form__form" (submit)="addUser()" [formGroup]="profileForm">
       <label for="firstName" class="form__label">First name:</label>
-      <input type="text" name="firstName" placeholder="First name" class="form__input" [(ngModel)]="firstName" [required]>
+      <input [ngClass]="!profileForm.controls['firstName'].valid && profileForm.controls['firstName'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="firstName" type="text" name="firstName" placeholder="First name" [(ngModel)]="firstName">
+
       <label for="lastName" class="form__label">Last name:</label>
-      <input type="text" name="lastName" placeholder="Last name" class="form__input" [(ngModel)]="lastName" [required]>
-      <input type="submit" value="Save" class="form__submit">
+      <input [ngClass]="!profileForm.controls['lastName'].valid && profileForm.controls['lastName'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="lastName" type="text" name="lastName" placeholder="Last name" [(ngModel)]="lastName">
+
+      <input [disabled]="!profileForm.valid" type="submit" value="Save" class="form__submit">
     </form>
     <a href="" routerLink="/dashboard" class="dashboard__link">Dashboard</a>
   </div>

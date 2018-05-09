@@ -6,26 +6,26 @@
     <a href='/dashboard' class='header__link' *ngIf="isLogin">
       <img alt='Logo' class='header__logo' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==' />
     </a>
-    <div class="menu__icon"> <span class='menu__icon--next'> </span></div>
-    <nav class="nav">
+    <div class="menu__icon" [ngClass]="animatedIconMenu ? 'menu__icon menu__icon--active' : menu__icon" (click)="showMenu()"> <span class='menu__icon--next'> </span></div>
+    <nav class="nav" [ngClass]="animatedMenu ? 'nav nav--show' : nav">
       <ul class="menu">
         <li class="menu__item" *ngIf="!isLogin">
-          <a href="" routerLink='/home' class="menu__link">Home</a>
+          <a href="" routerLink='/home' class="menu__link" (click)="showMenu()">Home</a>
         </li>
         <li class="menu__item" *ngIf="isLogin">
-          <a href="" routerLink='/dashboard' class="menu__link">Dashboard</a>
+          <a href="" routerLink='/dashboard' class="menu__link" (click)="showMenu()">Dashboard</a>
         </li>
         <li class="menu__item" *ngIf="!isLogin">
-          <a href="" routerLink='/login' class="menu__link">Login</a>
+          <a href="" routerLink='/login' class="menu__link" (click)="showMenu()">Login</a>
         </li>
         <li class="menu__item" *ngIf="!isLogin">
-          <a href="" routerLink='/register' class="menu__link">Register</a>
+          <a href="" routerLink='/register' class="menu__link" (click)="showMenu()">Register</a>
         </li>
         <li class="menu__item" *ngIf="isLogin">
-          <a href="" routerLink='/profile' class="menu__link">Profile</a>
+          <a href="" routerLink='/profile' class="menu__link" (click)="showMenu()">Profile</a>
         </li>
         <li class="menu__item menu__item--logout" *ngIf="isLogin">
-          <a href="" class="menu__link menu__link--logout" (click)="logout()">Logout</a>
+          <a href="" class="menu__link menu__link--logout" (click)="logout()" (click)="showMenu()">Logout</a>
         </li>
       </ul>
     </nav>

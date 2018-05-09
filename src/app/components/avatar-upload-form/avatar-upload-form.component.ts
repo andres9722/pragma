@@ -12,7 +12,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class AvatarUploadFormComponent implements OnInit {
   private selectedFiles: FileList;
-  currentUpload: AvatarUpload;
+  private currentUpload: AvatarUpload;
   private user: any
 
   constructor(private avatarService: AvataruploadService, private authService: AuthService, private flashMessage: FlashMessagesService) { }
@@ -22,7 +22,6 @@ export class AvatarUploadFormComponent implements OnInit {
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles)
     this.flashMessage.show(`Avatar selected   ${this.selectedFiles[0].name}`, {cssClass: 'alert__success alert__profile', timeout: 2000})
   }
 

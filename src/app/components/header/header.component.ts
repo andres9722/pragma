@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private isLogin: boolean
-  private userName: string
-  private userEmail: string
+  private isLogin: boolean;
+  private animatedMenu: boolean = false;
+  private animatedIconMenu: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
     this.authService.getAuth().subscribe(auth => {
       if (auth) {
         this.isLogin = true
-        this.userName = auth.displayName
-        this.userEmail = auth.email
       } else {
         this.isLogin = false
       }
@@ -28,7 +26,11 @@ export class HeaderComponent implements OnInit {
 
   logout () {
     this.authService.logout()
-      .then(response => this.router.navigate(['/home']))
+  }
+
+  showMenu () {
+    this.animatedMenu = !this.animatedMenu
+    this.animatedIconMenu = !this.animatedIconMenu
   }
 
 }

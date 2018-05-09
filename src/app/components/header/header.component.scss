@@ -124,9 +124,14 @@
 
     &--show {
       transform: translate(0);
+      background: color(white);
 
       .menu__item {
         animation: menu .6s cubic-bezier(.54,.11,.24,1.63) both;
+
+        @include from($large) {
+          animation: none;
+        }
 
         @for $i from 0 through 5 {
           &:nth-child(#{$i}) {

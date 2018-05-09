@@ -30,5 +30,4 @@ export class TodoService {
   removeTodo($key: string) {
     this.todoList.remove($key)
   }
-
 }

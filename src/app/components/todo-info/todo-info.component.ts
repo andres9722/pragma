@@ -10,6 +10,8 @@ import { Todo } from '../../models/todo';
 })
 export class TodoInfoComponent implements OnInit {
   private todo: any
+  private userEmail: string
+  private userUid: string
 
   constructor(private router: Router, private route: ActivatedRoute, private todoService: TodoService) { }
 
@@ -29,5 +31,4 @@ export class TodoInfoComponent implements OnInit {
       })
     })
   }
-
 }

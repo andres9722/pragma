@@ -35,4 +35,12 @@ export class AuthService {
   resetPassword (email: string) {
     return this.afAuth.auth.sendPasswordResetEmail(email)
   }
+
+  loginGoogle () {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  }
+
+  loginFacebook () {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+  }
 }

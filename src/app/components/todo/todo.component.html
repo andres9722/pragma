@@ -1,8 +1,9 @@
 <div class="todos">
-  <div class="todos__control">
-    <input type="text" (keyup.enter)="addTodo(todoText)" class="todos__input" name="todoInput" id="todoInput" minlength="5" #todoText placeholder="ADD">
-    <button class="todos__button" (click)="addTodo(todoText)">Submit</button>
-  </div>
+  <form class="todos__control" [formGroup]="todoForm">
+    <input [ngClass]="!todoForm.controls['todoText'].valid && todoForm.controls['todoText'].touched ? 'todos__input todos__input--invalid' : 'todos__input'"
+          formControlName="todoText" type="text" [(ngModel)]="todoText" name="todoInput" id="todoInput" placeholder="ADD">
+    <input [disabled]="!todoForm.valid" type="submit" value="Submit" class="todos__button" (click)="addTodo()">
+  </form>
 
   <section class="todos__container">
     <ul class="todos__list">

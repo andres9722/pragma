@@ -43,7 +43,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TodoComponent,
     TodoInfoComponent,
     AvatarUploadFormComponent,
-    SpinnerComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,15 @@
 <div class="form">
   <h1 class="form__title">Register</h1>
-  <form action="" class="form__form" (submit)="registerUser()">
+  <form action="" class="form__form" (submit)="registerUser()" [formGroup]="registerForm">
     <label for="email" class="form__label">Email:</label>
-    <input type="email" name="email" placeholder="Email" class="form__input" [(ngModel)]="email" required>
+    <input [ngClass]="!registerForm.controls['email'].valid && registerForm.controls['email'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="email" type="email" name="email" placeholder="Email" [(ngModel)]="email">
+
     <label for="password" class="form__label">Password:</label>
-    <input type="password" name="password" placeholder="Password" class="form__input" [(ngModel)]="password" required  minlength="6">
-    <input type="submit" value="Register" class="form__submit">
+    <input [ngClass]="!registerForm.controls['password'].valid && registerForm.controls['password'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="password" type="password" name="password" placeholder="Password" [(ngModel)]="password">
+
+    <input [disabled]="!registerForm.valid" type="submit" value="Register" class="form__submit">
   </form>
   <p class="register__message">You already have an account?</p>
   <a href="" routerLink="/login" class="register__link">Login</a>

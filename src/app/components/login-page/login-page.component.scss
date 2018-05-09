@@ -24,6 +24,10 @@
       border: 3px solid color(border-color);
       outline-color: darken(color(border-color), 10);
       color: color(font-color);
+
+      &--invalid {
+        border: 2px solid rgba(color(secondary-color), .3);
+      }
     }
 
     .form__label {
@@ -45,6 +49,10 @@
       transition: background .3s ease;
       border-radius: 5px;
 
+      &:disabled {
+        opacity: 0.7;
+      }
+
       &:hover {
         background: darken(color(secondary-color), 10);
       }
@@ -62,5 +70,61 @@
   .register__recovery {
     color: color(principal-color);
     margin-top: 16px;
+  }
+
+  .sociales__title {
+    padding-top: 8px;
+    margin-top: 8px;
+    border-top: 3px solid color(border-color);
+  }
+
+  .sociales {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+
+    &__item {
+      cursor: pointer;
+      transition: transform .3s ease;
+
+      &:hover {
+        transform: scale(1.08);
+      }
+
+      &--facebook {
+        position: relative;
+
+        &::before {
+          content: url('https://image.flaticon.com/icons/svg/145/145802.svg');
+          width: 45px;
+          height: 45px;
+          display: inline-block;
+        }
+      }
+
+      &--twitter {
+        position: relative;
+
+        &::before {
+          content: url('https://image.flaticon.com/icons/svg/145/145812.svg');
+          width: 45px;
+          height: 45px;
+          display: inline-block;
+        }
+      }
+
+      &--google {
+        position: relative;
+
+        &::before {
+          content: url('https://image.flaticon.com/icons/svg/145/145804.svg');
+          width: 45px;
+          height: 45px;
+          display: inline-block;
+        }
+      }
+    }
+
   }
 }

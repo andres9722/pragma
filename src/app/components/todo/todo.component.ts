@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../models/todo';
 import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-todo',
@@ -13,10 +14,16 @@ export class TodoComponent implements OnInit {
   private todo: Todo;
   private userEmail: string;
   private userUid: string
+  private todoForm: FormGroup;
+  private todoText: string;
 
-  constructor(private todoService: TodoService, private authService: AuthService) { }
+  constructor(private todoService: TodoService, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.todoForm = this.fb.group({
+      'todoText': [null, Validators.compose([Validators.required, Validators.minLength(3)])]
+    })
+
     this.authService.getAuth().subscribe(user => {
       this.todoService.getTodoList().snapshotChanges().subscribe(item => {
         this.todoList = []
@@ -36,21 +43,24 @@ export class TodoComponent implements OnInit {
     })
   }
 
-  addTodo (todoText) {
+  addTodo () {
     this.authService.getAuth().subscribe(user => {
       this.userEmail = user.email
       this.userUid = user.uid
 
-      this.todo = {
-        email: this.userEmail,
-        uid: this.userUid,
-        todoText: todoText.value,
-        isChecked: false
+      if(this.todoText !== '') {
+        this.todo = {
+          email: this.userEmail,
+          uid: this.userUid,
+          todoText: this.todoText,
+          isChecked: false
+        }
       }
+
 
       this.todoService.addTodo(this.todo)
       this.todo = null
-      todoText.value = null
+      this.todoText = null
     })
   }
 

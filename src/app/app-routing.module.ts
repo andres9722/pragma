@@ -10,9 +10,9 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { TodoInfoComponent } from './components/todo-info/todo-info.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home',pathMatch: 'full' },
-  { path: 'login', component: LoginPageComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
