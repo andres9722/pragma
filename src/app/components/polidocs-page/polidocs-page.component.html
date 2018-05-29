@@ -1,0 +1,25 @@
+<div class="form">
+  <h1 class="form__title">Polidocs</h1>
+  <h4 class="form__subtitle">Upload your files</h4>
+  <form action="" class="form__form" (submit)="loginUser()" [formGroup]="loginForm">
+    <label for="email" class="form__label">Teacher:</label>
+    <input [ngClass]="!loginForm.controls['email'].valid && loginForm.controls['email'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="email" type="email" name="email" placeholder="Email" [(ngModel)]="email">
+
+    <label for="password" class="form__label">Password:</label>
+    <input [ngClass]="!loginForm.controls['password'].valid && loginForm.controls['password'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="password" type="password" name="password" placeholder="Password" class="form__input" [(ngModel)]="password">
+
+    <input [disabled]="!loginForm.valid" type="submit" value="Login" class="form__submit">
+  </form>
+  <a href="" class="register__recovery" (click)="resetPassword()">Did you forget your password?</a>
+  <h4 class="sociales__title">Or enter with your account:</h4>
+
+  <div class="sociales">
+    <div class="sociales__item sociales__item--facebook" (click)="onClickFacebookLogin()"></div>
+    <div class="sociales__item sociales__item--google" (click)="onClickGoogleLogin()"></div>
+  </div>
+  <p class="register__message">You do not have an account?</p>
+  <a href="" routerLink="/register" class="register__link">Register</a>
+
+</div>

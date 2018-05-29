@@ -71,5 +71,4 @@ export class TodoComponent implements OnInit {
   removeTodo ($key: string) {
     this.todoService.removeTodo($key)
   }
-
 }

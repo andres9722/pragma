@@ -13,6 +13,9 @@
           <a href="" routerLink='/home' class="menu__link" (click)="showMenu()">Home</a>
         </li>
         <li class="menu__item" *ngIf="isLogin">
+          <a href="" routerLink='/polidocs' class="menu__link" (click)="showMenu()">Polidocs</a>
+        </li>
+        <li class="menu__item" *ngIf="isLogin">
           <a href="" routerLink='/dashboard' class="menu__link" (click)="showMenu()">Dashboard</a>
         </li>
         <li class="menu__item" *ngIf="!isLogin">

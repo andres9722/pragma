@@ -28,6 +28,8 @@ import { UserService } from './services/user.service';
 import { AvataruploadService } from './services/avatarupload.service';
 import { AvatarUploadFormComponent } from './components/avatar-upload-form/avatar-upload-form.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { PolidocsPageComponent } from './components/polidocs-page/polidocs-page.component';
+import { PolidocsService } from './services/polidocs.service';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TodoComponent,
     TodoInfoComponent,
     AvatarUploadFormComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PolidocsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     ReactiveFormsModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService, TodoService, UserService, AvataruploadService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, TodoService, UserService, AvataruploadService, PolidocsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

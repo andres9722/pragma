@@ -8,6 +8,7 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
 import { AuthGuard } from './guards/auth.guard';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { TodoInfoComponent } from './components/todo-info/todo-info.component';
+import { PolidocsPageComponent } from './components/polidocs-page/polidocs-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
+  { path: 'polidocs', component: PolidocsPageComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard/todo/:key', component: TodoInfoComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundPageComponent }

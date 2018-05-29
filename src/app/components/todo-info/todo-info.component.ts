@@ -16,10 +16,10 @@ export class TodoInfoComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private todoService: TodoService) { }
 
   ngOnInit() {
-    this.getUser(this.route.snapshot.params['key'])
+    this.getTodo(this.route.snapshot.params['key'])
   }
 
-  getUser ($key) {
+  getTodo ($key) {
     this.todo = this.todoService.getTodoList().snapshotChanges().subscribe(item => {
       this.todo = null
       item.forEach(element => {
